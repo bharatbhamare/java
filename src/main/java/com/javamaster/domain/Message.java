@@ -4,6 +4,7 @@ public class Message {
 
 	private String from;
 	private String message;
+	
 	public String getFrom() {
 		return from;
 	}
