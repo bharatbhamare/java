@@ -24,7 +24,9 @@ public static Connection getConnection()
 return conn;	
 }
 
-
+public void empty()
+{
+	}
 }
 
 
