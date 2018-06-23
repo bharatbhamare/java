@@ -13,7 +13,7 @@ public class StompConnectEvent implements ApplicationListener<SessionConnectEven
     public void onApplicationEvent(SessionConnectEvent event) {
         StompHeaderAccessor sha = StompHeaderAccessor.wrap(event.getMessage());
  
-        String  company = sha.getNativeHeader("company").get(0);
+        String  company = sha.getNativeHeader("chat-messaging").get(0);
         logger.debug("Connect event [sessionId: " + sha.getSessionId() +"; company: "+ company + " ]");
         System.out.println("Connect event [sessionId: " + sha.getSessionId() +"; company: "+ company + " ]");
     }

@@ -6,11 +6,11 @@ function connect() {
 		console.log("connected: " + frame);
 		
 		stompClient.subscribe('/chat/messages', function(response) {
-			alert('respo '+response);
+			//alert('respo '+response);
 			
 			var data = JSON.parse(response.body);
 			draw("left", data.message);
-		alert('id '+data.id);
+		//alert('id '+data.id);
 		
 		});
 	});
@@ -34,5 +34,5 @@ function disconnect(){
 }
 function sendMessage(){
 	stompClient.send("/app/message", {}, JSON.stringify({'message': $("#message_input_value").val()}));
-
+	
 }

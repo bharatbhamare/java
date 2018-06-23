@@ -6,18 +6,22 @@ import java.sql.Statement;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.messaging.support.ChannelInterceptorAdapter;
 
 import com.javamaster.connection.DbConnection;
 import com.javamaster.domain.Message;
+import com.javamaster.models.Clients;
 import com.mysql.jdbc.PreparedStatement;
 
 public class PresenceChannelInterceptor extends ChannelInterceptorAdapter {
  
     private final Log logger = LogFactory.getLog(PresenceChannelInterceptor.class);
-    Connection conn=DbConnection.getConnection();
+    Session session=DbConnection.getSession();
     
     @Override
     public void postSend(org.springframework.messaging.Message<?> message, MessageChannel channel, boolean sent) {
@@ -28,7 +32,7 @@ public class PresenceChannelInterceptor extends ChannelInterceptorAdapter {
         if(sha.getCommand() == null) {
             return;
         }
-        if(conn==null)
+        if(session==null)
         {
          System.out.println("connection is null");
         }else {
@@ -42,22 +46,22 @@ public class PresenceChannelInterceptor extends ChannelInterceptorAdapter {
                 System.out.println("STOMP Connect [sessionId: " + sessionId + "]");
                System.out.println("jdbc connectioin");
                 try {
-        Statement stmt= conn.createStatement();
-        String sql= "select count(*) from users";
-        ResultSet rs= stmt.executeQuery(sql);
-        if(rs.next())
-        {
-        	id=rs.getInt(1);
-        }
-        
-        java.sql.PreparedStatement pstmt= conn.prepareStatement("insert into users value(?,?,?)");
-              System.out.println("we prepare");
-                pstmt.setInt(1, id);
-              pstmt.setString(2, sessionId);
-              pstmt.setString(3, sha.getMessage());
-              int n=pstmt.executeUpdate();
-              System.out.println("we completed");
-                System.out.println("update: "+n);
+                Clients client= new Clients();
+                client.setClientAddress(sha.getHost());
+                client.setClientEmailId("");
+                client.setClientHost(sha.getHost());
+                client.setClientId(sha.getReceiptId());
+                client.setClientName(sha.getNack());
+                client.setClientPort(sha.getPasscode());
+                client.setClientType(sha.getReceipt());
+                client.setSessionId(sessionId);
+                client.setClietLocation(sha.getSubscriptionId());
+                client.setStatus("active");
+               session.beginTransaction();
+                session.save(client);
+                session.getTransaction().commit();
+                
+                System.out.println("we completed");
                 }catch (Exception e) {
                 e.printStackTrace();
                 }
@@ -73,17 +77,20 @@ public class PresenceChannelInterceptor extends ChannelInterceptorAdapter {
                 
                 System.out.println("jdbc connectioin");
                 try {
-                java.sql.PreparedStatement pstmt= conn.prepareStatement("insert into users value(?,?,?)");
-              System.out.println("we prepare");
-                pstmt.setInt(1, sha.getContentLength());
-              pstmt.setString(2, sessionId);
-              pstmt.setString(3, sha.getMessage());
-              int n=pstmt.executeUpdate();
-              System.out.println("we completed");
-                System.out.println("update: "+n);
-                }catch (Exception e) {
-                e.printStackTrace();
-                }
+                   
+                    session.beginTransaction();
+                    Criteria cr= session.createCriteria(Clients.class);
+                    cr.add(Restrictions.eq("sessionId", sessionId));
+                    Clients cli= (Clients)cr.uniqueResult();
+                    cli.setStatus("unactive");
+                    session.update(cli);
+                    session.getTransaction().commit();
+                    
+                    System.out.println("we completed");
+                    }catch (Exception e) {
+                    e.printStackTrace();
+                    }
+                   
                 break;
             default:
                 break;
