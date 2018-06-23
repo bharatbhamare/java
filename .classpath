@@ -29,5 +29,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/LENOVO/Desktop/LIB/mysql-connector-java-5.1.43-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate3"/>
+	<classpathentry kind="lib" path="C:/Users/LENOVO/Desktop/LIB/servlet-api.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

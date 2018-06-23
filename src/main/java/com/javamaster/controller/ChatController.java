@@ -29,9 +29,9 @@ public class ChatController {
 	public Message getMessages(Message message) {
 		
 		System.out.println(message);
-		ms.setClientName(" ");
-		ms.setClientSessionId(" ");
-		ms.setClintType(String.valueOf(++n));
+		ms.setClientname(" ");
+		ms.setClientsessionid(" ");
+		ms.setClinttype(String.valueOf(++n));
 		
 		ms.setMassage(message.getMessage());
 		ms.setMessageDate(new Date());

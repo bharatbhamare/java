@@ -6,108 +6,230 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
+
 @Component
 @Entity
+
 public class Clients {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	private String sessionId;
-	private String clientName;
-	private String clientId;
-	private String clientEmailId;
-	private String clientAddress;
-	private String clientHost;
-	private String clientPort;
-	private String clientType;
-	private String clietLocation;
+	private String sessionid;
+	private String clientname;
+	private String clientid;
+	private String clientemailid;
+	private String clientaddress;
+	private String clienthost;
+	private String clientport;
+	private String clienttype;
+	private String clietlocation;
 	private String status;
 	
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public Clients() {
 	
+	
+	
+	
+	public Clients() {
+		
 	}
-	public Clients(int id, String sessionId, String clientName, String clientId, String clientEmailId,
-			String clientAddress, String clientHost, String clientPort, String clientType, String clietLocation) {
+
+
+
+
+
+	public Clients(int id, String sessionid, String clientname, String clientid, String clientemailid,
+			String clientaddress, String clienthost, String clientport, String clienttype, String clietlocation,
+			String status) {
 		super();
 		this.id = id;
-		this.sessionId = sessionId;
-		this.clientName = clientName;
-		this.clientId = clientId;
-		this.clientEmailId = clientEmailId;
-		this.clientAddress = clientAddress;
-		this.clientHost = clientHost;
-		this.clientPort = clientPort;
-		this.clientType = clientType;
-		this.clietLocation = clietLocation;
+		this.sessionid = sessionid;
+		this.clientname = clientname;
+		this.clientid = clientid;
+		this.clientemailid = clientemailid;
+		this.clientaddress = clientaddress;
+		this.clienthost = clienthost;
+		this.clientport = clientport;
+		this.clienttype = clienttype;
+		this.clietlocation = clietlocation;
+		this.status = status;
 	}
+
+
+
+
+
 	public int getId() {
 		return id;
 	}
+
+
+
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getSessionId() {
-		return sessionId;
+
+
+
+
+
+	public String getSessionid() {
+		return sessionid;
 	}
-	public void setSessionId(String sessionId) {
-		this.sessionId = sessionId;
+
+
+
+
+
+	public void setSessionid(String sessionid) {
+		this.sessionid = sessionid;
 	}
-	public String getClientName() {
-		return clientName;
+
+
+
+
+
+	public String getClientname() {
+		return clientname;
 	}
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
+
+
+
+
+
+	public void setClientname(String clientname) {
+		this.clientname = clientname;
 	}
-	public String getClientId() {
-		return clientId;
+
+
+
+
+
+	public String getClientid() {
+		return clientid;
 	}
-	public void setClientId(String clientId) {
-		this.clientId = clientId;
+
+
+
+
+
+	public void setClientid(String clientid) {
+		this.clientid = clientid;
 	}
-	public String getClientEmailId() {
-		return clientEmailId;
+
+
+
+
+
+	public String getClientemailid() {
+		return clientemailid;
 	}
-	public void setClientEmailId(String clientEmailId) {
-		this.clientEmailId = clientEmailId;
+
+
+
+
+
+	public void setClientemailid(String clientemailid) {
+		this.clientemailid = clientemailid;
 	}
-	public String getClientAddress() {
-		return clientAddress;
+
+
+
+
+
+	public String getClientaddress() {
+		return clientaddress;
 	}
-	public void setClientAddress(String clientAddress) {
-		this.clientAddress = clientAddress;
+
+
+
+
+
+	public void setClientaddress(String clientaddress) {
+		this.clientaddress = clientaddress;
 	}
-	public String getClientHost() {
-		return clientHost;
+
+
+
+
+
+	public String getClienthost() {
+		return clienthost;
 	}
-	public void setClientHost(String clientHost) {
-		this.clientHost = clientHost;
+
+
+
+
+
+	public void setClienthost(String clienthost) {
+		this.clienthost = clienthost;
 	}
-	public String getClientPort() {
-		return clientPort;
+
+
+
+
+
+	public String getClientport() {
+		return clientport;
 	}
-	public void setClientPort(String clientPort) {
-		this.clientPort = clientPort;
+
+
+
+
+
+	public void setClientport(String clientport) {
+		this.clientport = clientport;
 	}
-	public String getClientType() {
-		return clientType;
+
+
+
+
+
+	public String getClienttype() {
+		return clienttype;
 	}
-	public void setClientType(String clientType) {
-		this.clientType = clientType;
+
+
+
+
+
+	public void setClienttype(String clienttype) {
+		this.clienttype = clienttype;
 	}
-	public String getClietLocation() {
-		return clietLocation;
+
+
+
+
+
+	public String getClietlocation() {
+		return clietlocation;
 	}
-	public void setClietLocation(String clietLocation) {
-		this.clietLocation = clietLocation;
+
+
+
+
+
+	public void setClietlocation(String clietlocation) {
+		this.clietlocation = clietlocation;
 	}
-	
+
+
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
 	
 }

@@ -47,15 +47,15 @@ public class PresenceChannelInterceptor extends ChannelInterceptorAdapter {
                System.out.println("jdbc connectioin");
                 try {
                 Clients client= new Clients();
-                client.setClientAddress(sha.getHost());
-                client.setClientEmailId("");
-                client.setClientHost(sha.getHost());
-                client.setClientId(sha.getReceiptId());
-                client.setClientName(sha.getNack());
-                client.setClientPort(sha.getPasscode());
-                client.setClientType(sha.getReceipt());
-                client.setSessionId(sessionId);
-                client.setClietLocation(sha.getSubscriptionId());
+                client.setClientaddress(sha.getHost());
+                client.setClientemailid("");
+                client.setClienthost(sha.getHost());
+                client.setClientid(sha.getReceiptId());
+                client.setClientname(sha.getNack());
+                client.setClientport(sha.getPasscode());
+                client.setClienttype(sha.getReceipt());
+                client.setSessionid(sessionId);
+                client.setClietlocation(sha.getSubscriptionId());
                 client.setStatus("active");
                session.beginTransaction();
                 session.save(client);

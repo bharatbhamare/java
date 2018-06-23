@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -13,14 +14,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
+@Table(name="clientmassages")
 public class ClientMassages {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	private String clientName;
-	private String clintType;
-	private String clientSessionId;
+	private String clientname;
+	private String clinttype;
+	private String clientsessionid;
 	private String massage;
 	@Temporal(TemporalType.DATE)
 	private Date messageDate;
@@ -30,56 +32,86 @@ public class ClientMassages {
 	public ClientMassages() {
 		
 	}
-	public ClientMassages(int id, String clientName, String clintType, String clientSessionId, String massage,
+
+
+	public ClientMassages(int id, String clientname, String clinttype, String clientsessionid, String massage,
 			Date messageDate, String messageTime) {
 		super();
 		this.id = id;
-		this.clientName = clientName;
-		this.clintType = clintType;
-		this.clientSessionId = clientSessionId;
+		this.clientname = clientname;
+		this.clinttype = clinttype;
+		this.clientsessionid = clientsessionid;
 		this.massage = massage;
 		this.messageDate = messageDate;
 		this.messageTime = messageTime;
 	}
+
+
 	public int getId() {
 		return id;
 	}
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getClientName() {
-		return clientName;
+
+
+	public String getClientname() {
+		return clientname;
 	}
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
+
+
+	public void setClientname(String clientname) {
+		this.clientname = clientname;
 	}
-	public String getClintType() {
-		return clintType;
+
+
+	public String getClinttype() {
+		return clinttype;
 	}
-	public void setClintType(String clintType) {
-		this.clintType = clintType;
+
+
+	public void setClinttype(String clinttype) {
+		this.clinttype = clinttype;
 	}
-	public String getClientSessionId() {
-		return clientSessionId;
+
+
+	public String getClientsessionid() {
+		return clientsessionid;
 	}
-	public void setClientSessionId(String clientSessionId) {
-		this.clientSessionId = clientSessionId;
+
+
+	public void setClientsessionid(String clientsessionid) {
+		this.clientsessionid = clientsessionid;
 	}
+
+
 	public String getMassage() {
 		return massage;
 	}
+
+
 	public void setMassage(String massage) {
 		this.massage = massage;
 	}
+
+
 	public Date getMessageDate() {
 		return messageDate;
 	}
+
+
 	public void setMessageDate(Date messageDate) {
 		this.messageDate = messageDate;
 	}
+
+
 	public String getMessageTime() {
 		return messageTime;
 	}
+
+
 	public void setMessageTime(String messageTime) {
 		this.messageTime = messageTime;
 	}

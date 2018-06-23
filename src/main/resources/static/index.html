@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="chatapp">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -9,14 +9,15 @@
 <script src="/webjars/sockjs-client/sockjs.min.js"></script>
 <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 <script src="/script.js"></script>
+<script src="angular/angular.js"></script>
+<script src="angular/app.js"></script>
+<script src="angular/controller/chat_controller.js"></script>
+<script src="angular/service/chat_service.js"></script>
 </head>
-<body>
-	<h1>Simple chat</h1>
+    <body ng-controller="chatcontroller as cltr" >
+	<h1 onload="cltr.fetchAllClients()">Simple chat</h1>
 	<ul>
-	<li>1</li>
-	<li>1</li>
-	<li>1</li>
-	<li>1</li>
+	<li>{{cltr.clients.status}} {{cltr.clients.sessionid}}1</li>
 	</ul>
 	<div class="chat_window">
 		<div class="top_menu">
@@ -25,7 +26,7 @@
 				<div class="button minimize"></div>
 				<div class="button maximize"></div>
 			</div>
-			<div class="title">Chat</div>
+			<div class="title">{{cltr.clients.status}}Chat</div>
 		</div>
 		<ul class="messages"></ul>
 		<div class="bottom_wrapper clearfix">
@@ -37,7 +38,7 @@
 				
 			</div>
 			
-			<button onclick="connect()">Connect to chat</button>
+			<button   onclick="connect()">Connect to chat</button>
 			<button onclick="sendMessage()" class="text">Send</button>
 				<button onclick="disconnect()">Disconnect from chat</button>
 		</div>
